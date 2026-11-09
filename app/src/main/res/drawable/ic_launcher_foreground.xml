@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Ikon ArusKu: tiga gelombang arus — dua hijau mint, satu emas (uang) -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <path
+        android:pathData="M31,43 C37,37 43,37 49,43 S61,49 67,43 S77,37 79,40"
+        android:strokeWidth="6.5"
+        android:strokeLineCap="round"
+        android:strokeColor="#3DDC97" />
+    <path
+        android:pathData="M29,55 C35,49 41,49 47,55 S59,61 65,55 S75,49 79,52"
+        android:strokeWidth="6.5"
+        android:strokeLineCap="round"
+        android:strokeColor="#8BEBC0" />
+    <path
+        android:pathData="M31,67 C37,61 43,61 49,67 S61,73 67,67 S77,61 79,64"
+        android:strokeWidth="6.5"
+        android:strokeLineCap="round"
+        android:strokeColor="#FFC857" />
+</vector>

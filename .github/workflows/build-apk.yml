@@ -1,0 +1,45 @@
+name: Build APK ArusKu
+
+on:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ambil source code
+        uses: actions/checkout@v4
+
+      - name: Siapkan Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      # Runner ubuntu-latest sudah punya Android SDK bawaan (ANDROID_HOME)
+      - name: Build APK
+        run: |
+          chmod +x ./gradlew
+          ./gradlew assembleRelease --no-daemon --stacktrace
+          cp app/build/outputs/apk/release/app-release.apk ArusKu.apk
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: ArusKu-APK
+          path: ArusKu.apk
+          if-no-files-found: error
+
+      # APK juga diterbitkan di halaman Releases supaya bisa di-download langsung dari HP
+      - name: Terbitkan di Releases
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: build-${{ github.run_number }}
+          name: ArusKu build ${{ github.run_number }}
+          body: APK ArusKu siap pasang. Download ArusKu.apk di bawah ini.
+          files: ArusKu.apk
+          make_latest: true
